@@ -4,23 +4,23 @@
 
 
 module.exports = {
-    // 修改 src 为 src
-    // pages: {
-    //     index: {
-    //         entry: "src/main.js",
-    //         template: "public/index.html",
-    //         filename: "index.html"
-    //     }
-    // },
-    configureWebpack: {
-        externals: {
-            vue: 'Vue',
-            'vue-router': 'VueRouter',
-            axios: 'axios',
-            'element-ui': 'ElementUI',
-            'xlsx': 'XLSX'
+    // 修改 examples 为 examples
+    pages: {
+        index: {
+            entry: "examples/main.js",
+            template: "public/index.html",
+            filename: "index.html"
         }
     },
+    // configureWebpack: {
+    //     externals: {
+    //         vue: 'Vue',
+    //         'vue-router': 'VueRouter',
+    //         axios: 'axios',
+    //         'element-ui': 'ElementUI',
+    //         'xlsx': 'XLSX'
+    //     }
+    // },
     chainWebpack: config => {
         config.module
             .rule('js')

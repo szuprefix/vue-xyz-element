@@ -1,28 +1,7 @@
 /**
  * Created by denishuang on 2017/7/27.
  */
-// import Qs from 'qs'
-// import {format} from 'date-fns'
-// function joinErrors(errors) {
-//     let es = {}
-//     for (let n in errors) {
-//         es[n] = errors[n].join("")
-//     }
-//     return es
-// }
-//
-// function formatDates(data) {
-//     let rs = {}
-//     for (let n in data) {
-//         let d = data[n]
-//         if (d instanceof Date) {
-//             rs[n] = format(d, 'YYYY-MM-DD')
-//         } else {
-//             rs[n] = d
-//         }
-//     }
-//     return rs
-// }
+
 
 export default  {
     data (){
@@ -36,22 +15,6 @@ export default  {
         }
     },
     methods: {
-        // joinErrors,
-        // submitData: function (url, data, successMsg, isCreate) {
-        //     this.loading = true
-        //     this.errors = {}
-        //     let action = isCreate ? this.$http.post : this.$http.put
-        //     let dt = this.restStyle ? data : Qs.stringify(formatDates(data))
-        //     let promise = action(url, dt).then(({data}) => {
-        //         this.loading = false
-        //         if (!this.restStyle && data.code != 0) {
-        //             return Promise.reject({code: 400, msg: data.data.errors})
-        //         }
-        //         this.$message({message: successMsg || '提交成功', type: 'success'})
-        //         return data
-        //     }).catch(this.onServerResponseError)
-        //     return promise
-        // },
         alertError(error){
             this.$message({
                 message: `${error.code}错误:${error.msg}`, type: 'error'
@@ -59,7 +22,7 @@ export default  {
 
         },
         onServerResponseError: function (error) {
-            this.loading = false
+            this.loadingText = ''
             if (error == 'cancel') {  // confirm dialog cancel ?
                 return
             }
@@ -79,31 +42,6 @@ export default  {
                 this.alertError(error)
             }
             return error
-            // this.server_response_error = error
         },
-        //
-        // resolveRoutePath(path) {
-        //     return path
-        //   // wayky add : 根据isTagsView自动给路由路径处理结尾的 / , tagView 组件的去掉结尾的 /
-        //   if (this.isTagsView) {
-        //     return path
-        //   } else {
-        //     if (path.indexOf('?') !== -1) {
-        //       const p = path.split('?')
-        //       return `${p[0]}/?${p[1]}`
-        //     } else {
-        //       return `${path}/`
-        //     }
-        //   }
-        // },
-        //
-        // resolveCurrentTagLabel(path, title) {
-        //   // wayky add : 根据isTagsView设置当前的Tag标签
-        //   if (this.isTagsView) {
-        //     this.$store.dispatch('setCurrentTagLabel', { path, title})
-        //     // 同时修改
-        //     this.$store.dispatch('updateLabelInVisitedViews', { path, title})
-        //   }
-        // }
     }
 }
